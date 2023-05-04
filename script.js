@@ -31,16 +31,24 @@ window.addEventListener('load', (e) => {
 	}
 
 	// Convert show_event onCLicks to proper hrefs
-	const onEventLinks = document.querySelectorAll('a[onClick*="show_event"]');
-	if (onEventLinks.length) {
-		for (const el of onEventLinks) {
-			const matches = Array.from(el.getAttribute('onClick').matchAll(/show_event\('(.+)'\)/g), (m) => m[1]);
-			if (matches.length) {
-				const match = matches[0];
+	function fix_onclicks() {
+		const onEventLinks = document.querySelectorAll('a[onClick*="show_event"]');
 
-				el.href = match;
-				el.removeAttribute('onClick');
+		if (onEventLinks.length) {
+			for (const el of onEventLinks) {
+				if (!el.hasAttribute('onClick')) continue;
+
+				const matches = Array.from(el.getAttribute('onClick').matchAll(/show_event\('(.+)'\)/g), (m) => m[1]);
+				if (matches.length) {
+					const match = matches[0];
+
+					el.href = match;
+					el.removeAttribute('onClick');
+				}
 			}
 		}
 	}
+	var observer = new MutationObserver(fix_onclicks);
+	observer.observe(document.body, { childList: true, subtree: true });
+	fix_onclicks();
 });
