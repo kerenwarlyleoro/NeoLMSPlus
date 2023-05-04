@@ -1,0 +1,18 @@
+@-moz-document regexp(".*lms\\..*|.*\\\\.*lms.*") {
+	/* Fix images being really squished if it has weird dimensions */
+	img.avatar, /* Avatars */
+	#ClassListsWidget table.mobileOptimized td.no-print img /* Course list */ {
+		object-fit: cover;
+	}
+
+	/* Unstyle instructions because it interferes with the dark mode */
+	div.materialStyle *[style*='color'][style*='background-color'] {
+		background-color: transparent !important;
+		color: inherit !important;
+	}
+
+	/* Add some padding to the right of the grading column, just to make it look less cramped */
+	div.grading_fixed_col {
+		padding-right: 0.5rem !important;
+	}
+}
