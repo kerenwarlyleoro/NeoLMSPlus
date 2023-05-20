@@ -1,7 +1,7 @@
 @-moz-document regexp(".*lms\\..*|.*\\/.*lms.*") {
 	/* Fix images being really squished if it has weird dimensions */
 	img.avatar, /* Avatars */
-#ClassListsWidget table.mobileOptimized td.no-print img/* Course list */ {
+	#ClassListsWidget table.mobileOptimized td.no-print img/* Course list */ {
 		object-fit: cover;
 	}
 
@@ -26,5 +26,15 @@
 	/* Hide announcement widget */
 	aside.rightColumn.right_widgets .widgets #announcements_section {
 		display: none;
+	}
+
+	/* Fix dropdown caret for modules being really small to interact */
+	.modern_module_info > .accordionLink > span:not(:first-child):not(.hide) {
+		padding: 0.5rem;
+		transition: transform 200ms ease-in-out;
+		display: inline-block;
+	}
+	.modern_module_info > .accordionLink > span:not(:first-child):hover {
+		transform: scale(1.2);
 	}
 }
