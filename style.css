@@ -1,7 +1,7 @@
-@-moz-document regexp(".*lms\\..*|.*\\\\.*lms.*") {
+@-moz-document regexp(".*lms\\..*|.*\\/.*lms.*") {
 	/* Fix images being really squished if it has weird dimensions */
 	img.avatar, /* Avatars */
-	#ClassListsWidget table.mobileOptimized td.no-print img /* Course list */ {
+#ClassListsWidget table.mobileOptimized td.no-print img/* Course list */ {
 		object-fit: cover;
 	}
 
@@ -14,5 +14,17 @@
 	/* Add some padding to the right of the grading column, just to make it look less cramped */
 	div.grading_fixed_col {
 		padding-right: 0.5rem !important;
+	}
+
+	/* Add white background to latex equations to make them more readable */
+	img[src*='/equation?latex'] {
+		background-color: white !important;
+		filter: initial !important;
+		padding: 0.5rem;
+	}
+
+	/* Hide announcement widget */
+	aside.rightColumn.right_widgets .widgets #announcements_section {
+		display: none;
 	}
 }
