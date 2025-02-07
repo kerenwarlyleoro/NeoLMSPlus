@@ -1,40 +1,49 @@
 @-moz-document regexp(".*lms\\..*|.*\\/.*lms.*") {
-	/* Fix images being really squished if it has weird dimensions */
-	img.avatar, /* Avatars */
-	#ClassListsWidget table.mobileOptimized td.no-print img/* Course list */ {
-		object-fit: cover;
-	}
+/* Fix images being really squished if it has weird dimensions */
+img.avatar,
+/* Avatars */
+#ClassListsWidget table.mobileOptimized td.no-print img/* Course list */
+{
+    object-fit: cover;
+}
 
-	/* Unstyle instructions because it interferes with the dark mode */
-	div.materialStyle *[style*='color'][style*='background-color'] {
-		background-color: transparent !important;
-		color: inherit !important;
-	}
+/* Unstyle instructions because it interferes with the dark mode */
+div.materialStyle *[style*='color'][style*='background-color'] {
+    background-color: transparent !important;
+    color: inherit !important;
+}
 
-	/* Add some padding to the right of the grading column, just to make it look less cramped */
-	div.grading_fixed_col {
-		padding-right: 0.5rem !important;
-	}
+/* Add some padding to the right of the grading column, just to make it look less cramped */
+div.grading_fixed_col {
+    padding-right: 0.5rem !important;
+}
 
-	/* Add white background to latex equations to make them more readable */
-	img[src*='/equation?latex'] {
-		background-color: white !important;
-		filter: initial !important;
-		padding: 0.5rem;
-	}
+/* Add white background to latex equations to make them more readable */
+img[src*='/equation?latex'] {
+    background-color: white !important;
+    filter: initial !important;
+    padding: 0.5rem;
+}
 
-	/* Hide announcement widget */
-	aside.rightColumn.right_widgets .widgets #announcements_section {
-		display: none;
-	}
+/* Hide announcement widget */
+aside.rightColumn.right_widgets .widgets #announcements_section {
+    display: none;
+}
 
-	/* Fix dropdown caret for modules being really small to interact */
-	.modern_module_info > .accordionLink > span:not(:first-child):not(.hide) {
-		padding: 0.5rem;
-		transition: transform 200ms ease-in-out;
-		display: inline-block;
-	}
-	.modern_module_info > .accordionLink > span:not(:first-child):hover {
-		transform: scale(1.2);
-	}
+/* Fix dropdown caret for modules being really small to interact */
+.modern_module_info > .accordionLink > span:not(:first-child):not(.hide) {
+    padding: 0.5rem;
+    transition: transform 200ms ease-in-out;
+    display: inline-block;
+}
+.modern_module_info > .accordionLink > span:not(:first-child):hover {
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 980px) {
+    /* Fix lesson body contents positioning itself behind the section header. */
+    #centreColumn:not(#fixedMarginTop) .lesson-body-content {
+        margin-top: 160px;
+    }
+}
 }
